@@ -57,7 +57,7 @@ const handler = (event, ctx, callback) => {
       callback(null, response);
     })
     .catch(e => {
-      const response = generateResponse(400, error);
+      const response = generateResponse(400, e);
       callback(null, response);
     });
 };
