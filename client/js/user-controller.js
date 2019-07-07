@@ -24,7 +24,7 @@ var userController = {
                 params: {
                     scope: 'openid profile email user_metadata picture'
                 },
-                responseType: 'token'
+                responseType: 'id_token token'
             }
         };
         this.data.auth0Lock = new Auth0Lock(config.auth0.clientId, config.auth0.domain, params);
@@ -92,6 +92,28 @@ var userController = {
             localStorage.setItem('accessToken', authResult.accessToken);
             localStorage.setItem('idToken', authResult.idToken);
             that.getUserProfile(authResult.accessToken, authResult.idToken);
+        });
+
+        this.uiElements.profileButton.click(function (e) {
+
+            var url = that.data.config.apiBaseUrl + '/user-profile';
+            var accessToken = localStorage.getItem('accessToken');
+            var data = {
+                accessToken: accessToken
+            };
+            var button = $(this);
+            button.button('loading');
+
+            $.get(url, data).done(function (data, status) {
+                // save user profile data in the modal
+                $('#user-profile-raw-json').text(JSON.stringify(data, null, 2));
+                $('#user-profile-modal').modal();
+                button.button('reset');
+            }).fail(function (error) {
+                alert('Can\'t retreive user information');
+                button.button('reset');
+                console.error(error);
+            });
         });
     }
 };
