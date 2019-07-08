@@ -43,3 +43,5 @@ build/Release
 sample-videos/
 lab-5/lambda/**/*.json
 !lab-5/lambda/**/package.json
+
+client/js/config.js

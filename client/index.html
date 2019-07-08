@@ -45,10 +45,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 <a class="navbar-brand" href="#">24 Hour Video</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
+
                 <div class="navbar-form navbar-right">
+
                     <button id="user-profile" class="btn btn-default" data-loading-text="Getting info">
                         <img id="profilepicture" />
                         <span id="profilename"></span>
@@ -56,6 +59,7 @@
 
                     <button id="auth0-login" class="btn btn-success">Sign in</button>
                     <button id="auth0-logout" class="btn btn-success">Sign Out</button>
+
 
                 </div>
             </div>
@@ -72,6 +76,21 @@
             <p>Guaranteed 100% server free.</p>
         </div>
     </div>
+
+    <div class="container" id="video-list-container">
+        <span id="upload-video-button" class="btn btn-info btn-file">
+            <span class="glyphicon glyphicon-plus"></span>
+            <input id="upload" type="file" name="file">
+        </span>
+
+        <div class="progress" id="upload-progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20"
+                aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                <span class="sr-only">20% Complete</span>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
 
     <!-- User profile modal -->
     <div id="user-profile-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -105,6 +124,7 @@
     <script src="https://cdn.auth0.com/js/lock/11.16.0/lock.min.js"></script>
 
     <script src="js/user-controller.js"></script>
+    <script src="js/upload-controller.js"></script>
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
 
